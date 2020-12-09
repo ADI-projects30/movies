@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% block head %}
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+    <link
+      href="{{url_for('static', filename='style_movie.css')}}"
+      rel="stylesheet"
+      type="text/css"
+    />
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{% block title %}{% endblock %}</title>
+        {% endblock %}
+    </head>
+    <body>    <div class="logo">Movies DB</div>
+    <nav>
+      <ul>
+        <li>
+          <a href="http://localhost:5000/">Home</a>
+        </li>
+        <li>
+          <a href="https://www.imdb.com/chart/toptv/">Imdb recommendations</a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/mesicka/">Credits</a>
+        </li>
+      </ul>
+    </nav>
+    <p></p>
+        <div id="content">{% block content %}{% endblock %}</div>
+        <div id="footer">{% block footer %}yay{% endblock %}</div>
+
+    </body>
+</html>

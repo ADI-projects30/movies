@@ -1,0 +1,4 @@
+DEBUG = True
+TESTING = True
+TEMPLATES_AUTO_RELOAD = True
+SECRET_KEY = (b'\x00\x99\x92d\x0cnN\xea\x17C\x86_,V\x98\x18\r')

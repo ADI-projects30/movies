@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- https://github.com/joshbuchea/HEAD -->
+    <meta charset="utf-8" />
+    <title>Series</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+    <link
+      href="{{url_for('static', filename='style_movie.css')}}"
+      rel="stylesheet"
+      type="text/css"
+    />
+  </head>
+  <body>
+    <div class="logo">Movies DB</div>
+    <nav>
+      <ul>
+        <li>
+          <a href="http://localhost:5000/">Home</a>
+        </li>
+        <li>
+          <a href="https://www.imdb.com/chart/toptv/">Imdb recommendations</a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/mesicka/">Credits</a>
+        </li>
+      </ul>
+    </nav>
+    <p></p>
+
+    <h1>It's time to relax and manage your movies database</h1>
+
+    <form action="/" method="Post">
+      <p>Enter enter "l" to login or "r" to register:</p>
+      <p><input type="text" name="lr" /></p>
+      <p><input type="submit" class="btn btn-success" value="submit" /></p>
+    </form>
+
+    <h3>{{production_count | safe }}</h3>
+     </body>
+</html>

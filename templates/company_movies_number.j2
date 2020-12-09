@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- https://github.com/joshbuchea/HEAD -->
+    <meta charset="utf-8" />
+    <title>Series</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+    <link
+      href="{{url_for('static', filename='style_movie.css')}}"
+      rel="stylesheet"
+      type="text/css"
+    />
+  </head>
+  <body>
+    <div class="logo">Movies DB</div>
+    <nav>
+      <ul>
+        <li>
+          <a href="http://localhost:5000/">Home</a>
+        </li>
+        <li>
+          <a href="https://www.imdb.com/chart/toptv/">Imdb recommendations</a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/mesicka/">Credits</a>
+        </li>
+      </ul>
+    </nav>
+    <p></p>
+
+    <h1>It's time to relax and manage your movies database</h1>
+    <h1>
+      Here you can create a new category, delete a category, 
+      update the number of votes for the movie and the score of the movie will be updated accordingly.
+      You can also get the synopsis of the movie you select by entering its ID number.
+      מערכת דירוג סרטים-אולי התחברות כאדמין
+יוזר צריך להתחבר כדי לדרג סרט.
+יוזר יכול להוסיף תגובה, למחוק תגובה
+, דאטהבייס מתעדכן בהתאםיוזר יכול לקבל דירוג של סרט.ניתן למחוק תגובה לא ראויה של יוזר
+להוסיף טבלת תגובות, וטבלת רבים לרבים יוזרסרט תגובות
+    </h1>
+
+    <form action="/company_count" method="Post">
+      <p>Enter company id:</p>
+      <p><input type="number" name="cn" /></p>
+      <p><input type="submit" class="btn btn-success" value="submit" /></p>
+    </form>
+
+    <h3>{{production_count | safe }}</h3>
+     </body>
+</html>
