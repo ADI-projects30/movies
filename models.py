@@ -1,18 +1,22 @@
+import os
+
 from peewee import (
     DateField, FloatField, ForeignKeyField, IntegerField, Model,
     SqliteDatabase, TextField, PostgresqlDatabase
 )
 
-import private
-
-# database = SqliteDatabase('manage_movies.db')
+DATABASE = os.environ.get('DATABASE')
+USER = os.environ.get('USER')
+PORT = os.environ.get('PORT')
+HOST = os.environ.get('HOST')
+PASSWORD = os.environ.get('PASSWORD')
 
 database = PostgresqlDatabase(
-    private.DATABASE,
-    user=private.USER,
-    password=private.PASSWORD,
-    host=private.HOST,
-    port=private.PORT,
+    DATABASE,
+    user=USER,
+    password=PASSWORD,
+    host=HOST,
+    port=PORT,
 )
 
 
