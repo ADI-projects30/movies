@@ -3,7 +3,7 @@ from peewee import (
     SqliteDatabase, TextField, PostgresqlDatabase
 )
 
-from private import private
+import private
 
 # database = SqliteDatabase('manage_movies.db')
 

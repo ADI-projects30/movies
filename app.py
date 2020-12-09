@@ -6,7 +6,7 @@ from flask import Flask, abort, redirect, render_template, request,session, url_
 from playhouse.shortcuts import model_to_dict
 import peewee
 
-from models import models, database, Companies, Categories, Movies, Users, MoviesCompany,  MoviesCategory, Reviews
+from models import database, Companies, Categories, Movies, Users, MoviesCompany,  MoviesCategory, Reviews
 
 
 app = Flask(__name__)
