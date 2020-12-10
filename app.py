@@ -5,7 +5,7 @@ from flask import (abort, Flask, redirect, render_template, request, session,
                    url_for)
 import peewee
 
-from models import (database, Categories, Companies, Movies, MoviesCategory, Reviews,
+from mymoviesmanage.models import (database, Categories, Companies, Movies, MoviesCategory, Reviews,
                     Users)
 
 app = Flask(__name__)
