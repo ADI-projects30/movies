@@ -5,8 +5,8 @@ from peewee import (
     PostgresqlDatabase, TextField
 )
 
-DATABASE_URL = os.environ['DATABASE_URL']
-conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+# DATABASE_URL = os.environ['DATABASE_URL']
+# conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 
 DATABASE = os.environ.get('DATABASE')
 USER = os.environ.get('USER')
