@@ -10,13 +10,11 @@ from peewee import (
 
 DATABASE = os.environ.get('DATABASE')
 USER = os.environ.get('USER')
-PORT = os.environ.get('PORT')
+PORT = os.environ.get('MYPORT')
 HOST = os.environ.get('HOST')
 PASSWORD = os.environ.get('PASSWORD')
 
-print(os.environ)
 print("[DEBUG]: {}:{}".format(HOST,PORT))
-
 
 database = PostgresqlDatabase(
     DATABASE,
@@ -25,9 +23,6 @@ database = PostgresqlDatabase(
     host=HOST,
     port=PORT,
 )
-
-print(database)
-
 
 class UnknownField(object):
     def __init__(self, *_, **__):
