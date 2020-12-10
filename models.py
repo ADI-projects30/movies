@@ -14,7 +14,9 @@ PORT = os.environ.get('PORT')
 HOST = os.environ.get('HOST')
 PASSWORD = os.environ.get('PASSWORD')
 
+print(os.environ)
 print("[DEBUG]: {}:{}".format(HOST,PORT))
+
 
 database = PostgresqlDatabase(
     DATABASE,
