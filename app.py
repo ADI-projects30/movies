@@ -1,13 +1,12 @@
-import sqlite3
 import random
 
 import bcrypt
-from flask import Flask, abort, redirect, render_template, request,session, url_for
-from playhouse.shortcuts import model_to_dict
+from flask import (abort, Flask, redirect, render_template, request, session,
+                   url_for)
 import peewee
 
-from models import database, Companies, Categories, Movies, Users, MoviesCompany,  MoviesCategory, Reviews
-
+from models import (database, Categories, Companies, Movies, MoviesCategory, Reviews,
+                    Users)
 
 app = Flask(__name__)
 app.config.from_pyfile('config.py')
@@ -45,6 +44,7 @@ def register():
     user.save()
     return 'Success!'
 
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'GET':
@@ -81,8 +81,6 @@ def logout():
 
 @app.route('/<id_company>')
 def company_produced_most_films(id_company):
-    db = sqlite3.connect('manage_movies.db')
-    cursor = db.cursor()
     query = Companies.select(Companies.name).where(Companies.id == id_company).limit(1).get()
     if query is None:
         return render_template('rating.j2', production_count='No such id')
@@ -107,10 +105,9 @@ def company_count():
 
 @app.route('/insert_category/<category>', methods=['POST', 'GET'])
 def insert_category(category):
-    b = True
     a = Categories.select(Categories.name).where(Categories.name == category)
     if not a.exists():
-        id_company = random.randint(0,7000000)
+        id_company = random.randint(0, 7000000)
         Categories.create(id=id_company, name=category)
         return 'Done'
     return 'Genre already exists'
@@ -138,7 +135,7 @@ def delete_category(category):
         Categories.delete().where(Categories.name == category).execute()
         MoviesCategory.delete().where(MoviesCategory.movie_id == get_save_id).execute()
         return 'DONE'
-    return f"Genre doesn't exists"
+    return "Genre doesnt exists"
 
 
 @app.route('/delete', methods=['POST', 'GET'])
@@ -155,16 +152,15 @@ def delete():
         return redirect(url_for('delete_category', category=category_select))
 
 
-
 @app.route('/vote/<id_movie>/<user_review>/<vote>', methods=['POST', 'GET'])
 def update_vote_average_count(id_movie, user_review, vote):
     vote = float(vote)
     get_vote = Movies.select(Movies.vote_average).where(Movies.id == id_movie).limit(1).get()
     get_average = Movies.select(Movies.vote_count).where(Movies.id == id_movie).limit(1).get()
     new_vote = ((get_vote.vote_average * get_average.vote_count) + 1) / (get_average.vote_count + 1)
-    updating_vote = Movies.update(vote_average = new_vote).where(Movies.id == id_movie)
+    updating_vote = Movies.update(vote_average=new_vote).where(Movies.id == id_movie)
     updating_vote.execute()
-    updating_count = Movies.update(vote_count = get_average.vote_count + 1).where(Movies.id == id_movie).execute()
+    Movies.update(vote_count=get_average.vote_count + 1).where(Movies.id == id_movie).execute()
     Reviews.create(review=user_review, score=vote, user_id=session['id'], movie_id=id_movie)
     return 'Done'
 
@@ -187,7 +183,6 @@ def rating():
         return redirect(url_for('update_vote_average_count', id_movie=movie_idd, user_review=movie_review, vote=movie_score))
 
 
-
 @app.route('/choose', methods=['POST', 'GET'])
 def choose():
     if request.method == 'POST':
@@ -197,13 +192,14 @@ def choose():
         elif choose_action == "i":
             return render_template('categories_insert.j2')
         else:
-            return f'Only "d" and "i"' 
+            return 'Only  d  and  i ' 
     else:
         choose_action = request.args.get('ch')
         if choose_action == "d":
             return render_template('categories_delete.j2')
         if choose_action == "i":
             return render_template('categories_insert.j2')
+
 
 @app.route('/', methods=['POST', 'GET'])
 def choose_login_register():

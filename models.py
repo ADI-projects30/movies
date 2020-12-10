@@ -1,9 +1,12 @@
 import os
-
+import psycopg2
 from peewee import (
-    DateField, FloatField, ForeignKeyField, IntegerField, Model,
-    SqliteDatabase, TextField, PostgresqlDatabase
+    FloatField, ForeignKeyField, IntegerField, Model,
+    PostgresqlDatabase, TextField
 )
+
+DATABASE_URL = os.environ['DATABASE_URL']
+conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 
 DATABASE = os.environ.get('DATABASE')
 USER = os.environ.get('USER')
@@ -35,6 +38,7 @@ class Categories(BaseModel):
 
     class Meta:
         table_name = 'categories'
+
 
 class Companies(BaseModel):
     name = TextField()
@@ -73,6 +77,7 @@ class MoviesCategory(BaseModel):
     class Meta:
         table_name = 'movies_category'
 
+
 class MoviesCompany(BaseModel):
     company_id = ForeignKeyField(Companies)
     movie_id = ForeignKeyField(Movies)
@@ -89,7 +94,6 @@ class Reviews(BaseModel):
 
     class Meta:
         table_name = 'reviews'
-
 
 
 TABLES = [
