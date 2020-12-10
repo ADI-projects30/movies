@@ -14,6 +14,8 @@ PORT = os.environ.get('PORT')
 HOST = os.environ.get('HOST')
 PASSWORD = os.environ.get('PASSWORD')
 
+print("[DEBUG]: {}:{}".format(HOST,PORT))
+
 database = PostgresqlDatabase(
     DATABASE,
     user=USER,
@@ -21,6 +23,8 @@ database = PostgresqlDatabase(
     host=HOST,
     port=PORT,
 )
+
+print(database)
 
 
 class UnknownField(object):
