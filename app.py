@@ -13,12 +13,14 @@ app.config.from_pyfile('config.py')
 
 @app.before_request
 def _db_connect():
+    print("[DEBUG] connect() called")
     database.connect()
 
 
 @app.teardown_request
 def _db_close(_):
     if not database.is_closed():
+        print("[DEBUG] close() called")
         database.close()
 
 
@@ -66,6 +68,7 @@ def login():
     session['username'] = user.username
     session['name'] = user.name
     session['id'] = user.id
+    print("[DEBUG] session created")
     if session['username'] != 'admin':
         return render_template('rating.j2')
     return render_template('choose.j2')
