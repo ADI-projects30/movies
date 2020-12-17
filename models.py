@@ -20,6 +20,7 @@ database = PostgresqlDatabase(
     password=PASSWORD,
     host=HOST,
     port=PORT,
+    autorollback=True
 )
 
 class UnknownField(object):
